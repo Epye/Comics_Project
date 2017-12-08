@@ -1,4 +1,4 @@
-package nicolas.quillon.iem.gestion_comics.model.pojo;
+package nicolas.quillon.iem.gestion_comics.Modele.pojo;
 
 /**
  * Created by iem on 08/12/2017.

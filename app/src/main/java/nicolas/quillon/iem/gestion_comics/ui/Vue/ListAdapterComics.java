@@ -1,0 +1,84 @@
+package nicolas.quillon.iem.gestion_comics.ui.Vue;
+
+import android.content.Context;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
+import nicolas.quillon.iem.gestion_comics.R;
+
+public class ListAdapterComics extends ArrayAdapter<Comic> {
+
+    //region Constructeur
+
+    public ListAdapterComics(Context pContext, List objects){
+        super(pContext, 0, objects);
+    }
+
+    //endregion
+
+    //region Override
+    @Override
+    public View getView(int pPosition, View pConvertView, ViewGroup pParent){
+        if(pConvertView == null){
+            pConvertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_adapter_comics,pParent, false);
+        }
+
+        ViewHolder viewHolder  = (ViewHolder) pConvertView.getTag();
+
+        if (viewHolder == null){
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            pConvertView = inflater.inflate(R.layout.activity_list_adapter_comics, pParent, false);
+
+            viewHolder.imageViewComic = (ImageView) pConvertView.findViewById(R.id.imageViewComic);
+            viewHolder.textViewTitle = (TextView) pConvertView.findViewById(R.id.textViewTitre);
+            viewHolder.textViewName = (TextView) pConvertView.findViewById(R.id.textViewNom);
+            viewHolder.textViewDay = (TextView) pConvertView.findViewById(R.id.textViewJour);
+            viewHolder.textViewNumber = (TextView) pConvertView.findViewById(R.id.textViewNumero);
+            viewHolder.textViewDate = (TextView) pConvertView.findViewById(R.id.textViewDate);
+            viewHolder.textViewNumbersPages = (TextView) pConvertView.findViewById(R.id.textViewNbPage);
+
+            pConvertView.setTag(viewHolder);
+
+        }
+
+        Comic comic = getItem(pPosition);
+        viewHolder.textViewTitle.setText(comic.getTitle());
+        //viewHolder.textViewName.setText(comic.get);
+        //viewHolder.textViewDay.setText(comic.getDate());
+        viewHolder.textViewNumber.setText(comic.getIssueNumber());
+        viewHolder.textViewDate.setText((CharSequence) comic.getDate());
+        viewHolder.textViewNumbersPages.setText(comic.getPageCount());
+
+        Picasso.with(getContext()).load(comic.getImage()).resize(200, 200).into(viewHolder.imageViewComic);
+
+        return pConvertView;
+
+    }
+
+    //endregion
+
+
+
+    private static class ViewHolder{
+        ImageView imageViewComic;
+        TextView textViewTitle;
+        TextView textViewName;
+        TextView textViewDay;
+        TextView textViewNumber;
+        TextView textViewDate;
+        TextView textViewNumbersPages;
+    }
+}
+
+
+

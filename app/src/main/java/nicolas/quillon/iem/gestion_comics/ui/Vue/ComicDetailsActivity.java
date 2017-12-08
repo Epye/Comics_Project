@@ -1,4 +1,4 @@
-package nicolas.quillon.iem.gestion_comics.ui.activity;
+package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
