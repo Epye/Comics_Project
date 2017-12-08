@@ -2,14 +2,14 @@
 set -x
 
 #REQUIRED
-apk_origin_path=app/build/outputs/apk/app-debug.apk
+apk_origin_path=app/build/outputs/apk/debug/app-debug.apk
 apk_name=sample
 apk_extension=.apk
 apk_folder=build/apk/
 
 #LET'S SCRIPT
 #GET FINAL APK_PATH
-date=$(date '+%d%m%Y%H%M%S');
+date=$(date '+%d%m%Y%H%M');
 apk_final_path=$apk_folder$apk_name-$date$apk_extension
 
 #BUILD APK
