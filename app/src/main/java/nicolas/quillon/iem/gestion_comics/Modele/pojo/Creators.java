@@ -1,4 +1,4 @@
-package nicolas.quillon.iem.gestion_comics.model.pojo;
+package nicolas.quillon.iem.gestion_comics.Modele.pojo;
 
 import java.util.ArrayList;
 
