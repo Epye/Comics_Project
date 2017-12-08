@@ -42,7 +42,6 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
             viewHolder.imageViewComic = (ImageView) pConvertView.findViewById(R.id.imageViewComic);
             viewHolder.textViewTitle = (TextView) pConvertView.findViewById(R.id.textViewTitre);
             viewHolder.textViewName = (TextView) pConvertView.findViewById(R.id.textViewNom);
-            viewHolder.textViewDay = (TextView) pConvertView.findViewById(R.id.textViewJour);
             viewHolder.textViewNumber = (TextView) pConvertView.findViewById(R.id.textViewNumero);
             viewHolder.textViewDate = (TextView) pConvertView.findViewById(R.id.textViewDate);
             viewHolder.textViewNumbersPages = (TextView) pConvertView.findViewById(R.id.textViewNbPage);
@@ -54,7 +53,6 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
         Comic comic = getItem(pPosition);
         viewHolder.textViewTitle.setText(comic.getTitle());
         //viewHolder.textViewName.setText(comic.get);
-        //viewHolder.textViewDay.setText(comic.getDate());
         viewHolder.textViewNumber.setText(comic.getIssueNumber());
         viewHolder.textViewDate.setText((CharSequence) comic.getDate());
         viewHolder.textViewNumbersPages.setText(comic.getPageCount());
@@ -73,7 +71,6 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
         ImageView imageViewComic;
         TextView textViewTitle;
         TextView textViewName;
-        TextView textViewDay;
         TextView textViewNumber;
         TextView textViewDate;
         TextView textViewNumbersPages;

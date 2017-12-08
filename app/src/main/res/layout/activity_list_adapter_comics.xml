@@ -19,6 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginRight="15dp"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -39,13 +40,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:text="@string/nom" />
-
-            <TextView
-                android:id="@+id/textViewJour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="@string/jour" />
 
             <TextView
                 android:id="@+id/textViewNumero"

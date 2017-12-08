@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context="nicolas.quillon.iem.gestion_comics.ui.Vue.MainActivity">
 
-
     <ListView
         android:id="@+id/listViewComics"
         android:layout_width="match_parent"
