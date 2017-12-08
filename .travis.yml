@@ -10,7 +10,7 @@ android:
     - extra-android-m2repository
 script:
     - "./gradlew testDebugUnitTest"
-    - "./fastflane/fastlane.sh"
+    - "./fastlane/fastlane.sh"
 deploy:
   provider: releases
   api_key: 8a9f3d8077440b49a5e42445c5c40d9a00b775e4
