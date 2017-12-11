@@ -1,29 +1,31 @@
 package nicolas.quillon.iem.gestion_comics.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 
 import nicolas.quillon.iem.gestion_comics.R;
 import nicolas.quillon.iem.gestion_comics.model.manager.JSONManager;
-import nicolas.quillon.iem.gestion_comics.model.pojo.Comic;
 
 public class MainActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        JSONManager jsonManager=new JSONManager(this.getBaseContext(),"/data/sample-ok.json");
+        //Initialisation du fichier JSON
+        JSONManager jsonManager=new JSONManager(this.getBaseContext(),"/data/sample-ok.json"); //dossier data à la racine du tel (pas sur SD)
         jsonManager.init();
-        TextView tv=(TextView) findViewById(R.id.hello);
-        try {
-            tv.setText(jsonManager.findById(0).getDescription());
-        }
-        catch(Exception e){}
+
+        /*Pour accéder aux données du JSON:
+
+        jsonManager.findAll() --> retourne l'objet "Comics" (contenant tous les comics)
+
+        jsonManager.findById(id) --> retourne l'objet "Comic" à la position "id" de "Comics" (+ accès aux getters)
+
+        */
     }
 }

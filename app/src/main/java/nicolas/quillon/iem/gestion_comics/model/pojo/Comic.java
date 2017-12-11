@@ -1,25 +1,29 @@
 package nicolas.quillon.iem.gestion_comics.model.pojo;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by iem on 05/12/2017.
  */
 
-public class Comic {
+public class Comic implements Serializable {
     private int id;
+    private int digitalId=0;
     private String title;
     private int issueNumber;
+    private String variantDescription="";
     private String description;
     private String diamondCode;
-    private Date date;
+    private String date;
     private float price;
     private int pageCount;
     private String image;
-    private Creators creators;
+    private Creator[] creators;
 
-    public Comic(int id, String title, int issueNumber, String description, String diamondCode, Date date, float price, int pageCount, String image, Creators creators) {
+    public Comic() {
+    }
+
+    public Comic(int id, String title, int issueNumber, String description, String diamondCode, String date, float price, int pageCount, String image, Creator[] creators) {
         this.id = id;
         this.title = title;
         this.issueNumber = issueNumber;
@@ -30,6 +34,37 @@ public class Comic {
         this.pageCount = pageCount;
         this.image = image;
         this.creators = creators;
+    }
+
+    public Comic(int id, int digitalId, String title, int issueNumber, String variantDescription, String description, String diamondCode, String date, float price, int pageCount, String image, Creator[] creators) {
+        this.id = id;
+        this.digitalId = digitalId;
+        this.title = title;
+        this.issueNumber = issueNumber;
+        this.variantDescription = variantDescription;
+        this.description = description;
+        this.diamondCode = diamondCode;
+        this.date = date;
+        this.price = price;
+        this.pageCount = pageCount;
+        this.image = image;
+        this.creators = creators;
+    }
+
+    public int getDigitalId() {
+        return digitalId;
+    }
+
+    public void setDigitalId(int digitalId) {
+        this.digitalId = digitalId;
+    }
+
+    public String getVariantDescription() {
+        return variantDescription;
+    }
+
+    public void setVariantDescription(String variantDescription) {
+        this.variantDescription = variantDescription;
     }
 
     public int getId() {
@@ -72,11 +107,11 @@ public class Comic {
         this.diamondCode = diamondCode;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -104,11 +139,11 @@ public class Comic {
         this.image = image;
     }
 
-    public Creators getCreators() {
+    public Creator[] getCreators() {
         return creators;
     }
 
-    public void setCreators(Creators creators) {
+    public void setCreators(Creator[] creators) {
         this.creators = creators;
     }
 }
