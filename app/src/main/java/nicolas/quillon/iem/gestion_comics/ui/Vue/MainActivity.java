@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     //region Variables
     private ListView listViewComic;
-    private Comics listComics;
     private JSONManager jsonManager;
 
     private ListAdapterComics adapterComics;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void InitializeView(){
         listViewComic = (ListView) findViewById(R.id.listViewComics);
-        listComics = new Comics();
 
         adapterComics = new ListAdapterComics(this, jsonManager.getAll().getResults());
 
