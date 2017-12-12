@@ -2,6 +2,7 @@ package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
 import android.content.Context;
 
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
+import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 import nicolas.quillon.iem.gestion_comics.R;
 
 public class ListAdapterComics extends ArrayAdapter<Comic> {
 
+    Context context;
     //region Constructeur
 
     public ListAdapterComics(Context pContext, List objects){
         super(pContext, 0, objects);
+        context = pContext;
     }
 
     //endregion
+
 
     //region Override
     @Override
@@ -55,11 +61,11 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
         viewHolder.textViewTitle.setText(comic.getTitle());
         //viewHolder.textViewName.setText(comic.get);
         //viewHolder.textViewDay.setText(comic.getDate());
-        viewHolder.textViewNumber.setText(comic.getIssueNumber());
-        viewHolder.textViewDate.setText((CharSequence) comic.getDate());
-        viewHolder.textViewNumbersPages.setText(comic.getPageCount());
+        viewHolder.textViewNumber.setText(""+comic.getIssueNumber());
+        viewHolder.textViewDate.setText(comic.getDate());
+        viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
 
-        Picasso.with(getContext()).load(comic.getImage()).resize(200, 200).into(viewHolder.imageViewComic);
+        Picasso.with(context).load(comic.getImage()).resize(200, 200).into(viewHolder.imageViewComic);
 
         return pConvertView;
 
