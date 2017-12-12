@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Gestion_Comics</string>
+    <string name="titre">Titre</string>
+    <string name="nom">Nom</string>
+    <string name="jour">Jour</string>
+    <string name="numero">N°</string>
+    <string name="date">Date</string>
+    <string name="nbPages">Nb pages</string>
 </resources>

@@ -1,4 +1,4 @@
-package nicolas.quillon.iem.gestion_comics.model.manager;
+package nicolas.quillon.iem.gestion_comics.Modele.manager;
 
 import android.content.Context;
 import android.os.Build;
@@ -13,8 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-import nicolas.quillon.iem.gestion_comics.model.pojo.Comic;
-import nicolas.quillon.iem.gestion_comics.model.pojo.Comics;
+import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
+import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
 
 /**
  * Created by iem on 05/12/2017.
@@ -29,7 +29,7 @@ public class JSONManager {
     private File jsonFile;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public JSONManager(Context context, String path) {
+    public JSONManager(String path) {
         objectMapper = new ObjectMapper();
         jsonFactory = new JsonFactory();
         jsonFile=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+path);
