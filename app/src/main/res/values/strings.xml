@@ -6,4 +6,9 @@
     <string name="numero">N°</string>
     <string name="date">Date</string>
     <string name="nbPages">Nb pages</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="info">Info</string>
+    <string name="price">Price</string>
+    <string name="diamondcode">DiamondCode</string>
+    <string name="credits">Credits</string>
 </resources>
