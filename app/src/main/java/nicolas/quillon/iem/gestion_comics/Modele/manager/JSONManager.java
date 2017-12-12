@@ -32,10 +32,11 @@ public class JSONManager {
     public JSONManager(String path) {
         objectMapper = new ObjectMapper();
         jsonFactory = new JsonFactory();
-        jsonFile=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+path);
-    }
 
-    public void init() {
+        //Ask for permissions
+
+        jsonFile=new File(Environment.getExternalStorageDirectory().getAbsolutePath()+path);
+
         try {
             jp = jsonFactory.createParser(jsonFile);
             comics = objectMapper.readValue(jp, Comics.class);
