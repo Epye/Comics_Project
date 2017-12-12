@@ -65,7 +65,7 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
         viewHolder.textViewDate.setText(comic.getDate());
         viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
 
-        Picasso.with(context).load(comic.getImage()).resize(200, 200).into(viewHolder.imageViewComic);
+        Picasso.with(context).load(comic.getImage()).resize(100, 150).into(viewHolder.imageViewComic);
 
         return pConvertView;
 
