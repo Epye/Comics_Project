@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 import nicolas.quillon.iem.gestion_comics.R;
@@ -45,28 +46,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void init(){
         //Initialisation du fichier JSON
-        jsonManager=new JSONManager("/data/sample-ok.json"); //dossier data à la racine du tel (pas sur SD)
+        //jsonManager=new JSONManager("/data/sample-ok.json"); //dossier data à la racine du tel (pas sur SD)
 
         //ad - appel de la fonction d'initialisation
-        InitializeView();
+        initializeInjection();
+        initializeView();
     }
 
 
     //region Methods
-    private void InitializeView(){
+    private void initializeView(){
         listViewComic = (ListView) findViewById(R.id.listViewComics);
         listComics = new Comics();
         adapterComics = new ListAdapterComics(this, jsonManager.getAll().getResults());
         listViewComic.setAdapter(adapterComics);
     }
 
+    private void initializeInjection(){
+        this.jsonManager = ComicsApplication.application().getJsonManager();
+    }
+
     private void askForPermission(){
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        1);
+        if (ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
         }else{
             init();
         }
@@ -76,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode,String permissions[],int[] grantResults) {
         switch (requestCode) {
             case 1: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    ComicsApplication.application().resetJSONManager(); //car l'injection de dépendance a été créée avant le runtime permission, donc le JSONManager est égal à NULL
                     init();
                 } else {
                     new AlertDialog.Builder(this)
