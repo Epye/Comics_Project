@@ -1,7 +1,7 @@
 language: android
 jdk: oraclejdk8
 before_install:
-    - quiet gem install fastlane --no-rdoc --no-ri --no-document --quiet
+    - gem install fastlane --no-rdoc --no-ri --no-document --quiet
 install: true
 android:
   components:
