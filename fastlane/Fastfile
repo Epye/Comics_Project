@@ -1,0 +1,60 @@
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.63.0"
+
+default_platform :android
+
+platform :android do
+  before_all do
+    PROJECT_NAME="comics"   
+  end
+
+  # public lanes
+  desc "build"
+  lane :build_debug do |options|
+    gradle(
+      task: "clean",
+    )
+    gradle(
+      task: "testDebugUnitTest",
+    )
+    gradle(
+      task: "assembleDebug",
+    )
+
+    OUTPUT_DIRECTORY_DEFAULT = "../output/apk/"
+    initial_apk_path = File.absolute_path(Dir.glob("../**/*.apk").last)
+    date_time = Time.now.strftime("%d%m%Y")
+    apk_filename = PROJECT_NAME+"-"+date_time+ ".apk"
+    final_apk_path = OUTPUT_DIRECTORY_DEFAULT+apk_filename
+    sh 'mkdir -p '+OUTPUT_DIRECTORY_DEFAULT
+    sh 'mv '+initial_apk_path+' '+final_apk_path    
+end
+
+  desc "unit tests"
+  lane :unit_tests do |options|
+    gradle(
+      task: "clean",
+    )    
+    gradle(
+      task: "testDebugUnitTest",
+    )
+  end
+
+
+  after_all do |lane|
+  end
+
+  error do |lane, exception|
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used
+# No personal data is sent or shared. Learn more at https://github.com/fastlane/enhancer
