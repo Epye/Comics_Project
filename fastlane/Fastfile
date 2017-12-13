@@ -9,7 +9,7 @@ default_platform :android
 
 platform :android do
   before_all do
-    PROJECT_NAME="comics-project"   
+    PROJECT_NAME="comics"   
   end
 
   # public lanes
