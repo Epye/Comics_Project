@@ -16,7 +16,8 @@ script:
     - "./fastlane/fastlane.sh"
 deploy:
   provider: releases
-  all_branches: true
   api_key: 8a9f3d8077440b49a5e42445c5c40d9a00b775e4
   file: "sample-$(date +'%d%m%Y%H%M').apk"
   skip_cleanup: true
+  on:
+    all_branches: true
