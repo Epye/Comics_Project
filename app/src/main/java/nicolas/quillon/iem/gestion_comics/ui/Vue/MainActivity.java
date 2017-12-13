@@ -2,6 +2,7 @@ package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
@@ -58,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
         listViewComic = (ListView) findViewById(R.id.listViewComics);
         adapterComics = new ListAdapterComics(this, jsonManager.getAll().getResults());
         listViewComic.setAdapter(adapterComics);
+
+        listViewComic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent().setClass(MainActivity.this, ComicDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initializeInjection(){
