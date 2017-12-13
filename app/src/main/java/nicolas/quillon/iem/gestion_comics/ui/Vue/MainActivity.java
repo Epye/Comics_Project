@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     //region Methods
     private void initializeView(){
         listViewComic = (ListView) findViewById(R.id.listViewComics);
-        listComics = new Comics();
         adapterComics = new ListAdapterComics(this, jsonManager.getAll().getResults());
         listViewComic.setAdapter(adapterComics);
     }
