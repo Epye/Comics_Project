@@ -1,6 +1,5 @@
 package nicolas.quillon.iem.gestion_comics.Modele.manager;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
@@ -13,8 +12,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
+import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 
 /**
  * Created by iem on 05/12/2017.
