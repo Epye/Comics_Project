@@ -35,6 +35,8 @@ public class ComicDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comic_details);
 
+        setTitle("Détail du comic");
+
         initializeInjection();
         InitializeView();
 
