@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     //region Variables
     private ListView listViewComic;
-    private Comics listComics;
     private JSONManager jsonManager;
 
     private ListAdapterComics adapterComics;
