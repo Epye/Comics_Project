@@ -1,13 +1,6 @@
 package nicolas.quillon.iem.gestion_comics.Modele.manager;
 
-import android.Manifest;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -17,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 

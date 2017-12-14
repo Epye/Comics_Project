@@ -4,10 +4,6 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
 
@@ -45,7 +41,7 @@ public class DetailsPresenter{
     }
 
     public String getnbPageComic(){
-        return "Nb pages : " + Integer.toString(comic.getPageCount());
+        return "Nombres de pages : " + Integer.toString(comic.getPageCount());
     }
 
     public String getDiamondComic(){

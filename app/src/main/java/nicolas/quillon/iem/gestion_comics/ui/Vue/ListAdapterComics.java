@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
@@ -58,9 +56,9 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
         viewHolder.textViewTitle.setText(comic.getTitle());
 
         viewHolder.textViewDate.setText(comic.getDate());
-        viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
+        viewHolder.textViewNumbersPages.setText(""+comic.getPageCount() + " pages" );
 
-        Picasso.with(context).load(comic.getImage()).into(viewHolder.imageViewComic);
+        Picasso.with(context).load(comic.getImage()).resize(250, 350).into(viewHolder.imageViewComic);
 
         return pConvertView;
 

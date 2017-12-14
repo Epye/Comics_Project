@@ -6,8 +6,6 @@ import android.support.annotation.RequiresApi;
 
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
-import nicolas.quillon.iem.gestion_comics.ui.Composition.ErrorModule;
-import nicolas.quillon.iem.gestion_comics.ui.Composition.ErrorModuleSnackbarImpl;
 import nicolas.quillon.iem.gestion_comics.ui.Vue.ListAdapterComics;
 
 /**

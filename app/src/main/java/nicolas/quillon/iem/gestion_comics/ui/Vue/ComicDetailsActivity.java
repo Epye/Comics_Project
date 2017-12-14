@@ -66,7 +66,7 @@ public class ComicDetailsActivity extends AppCompatActivity implements DetailsVi
         textViewCredit.setText(detailsPresenter.getCreditComic());
 
         imageViewComic = (ImageView) findViewById(R.id.imageViewComic);
-        Picasso.with(this).load(detailsPresenter.getImageComic()).into(imageViewComic);
+        Picasso.with(this).load(detailsPresenter.getImageComic()).resize(240, 350).into(imageViewComic);
 
 
     }
