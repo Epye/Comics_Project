@@ -15,17 +15,17 @@ import android.widget.ListView;
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
+import nicolas.quillon.iem.gestion_comics.Presenter.MainPresenter;
+import nicolas.quillon.iem.gestion_comics.Presenter.MainView;
 import nicolas.quillon.iem.gestion_comics.R;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     //region Variables
     private ListView listViewComic;
-    private Comics listComics;
-    private JSONManager jsonManager;
-
     private ListAdapterComics adapterComics;
+    private MainPresenter mainPresenter;
 
     //endregion
 
@@ -55,15 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     //region Methods
-    private void initializeView(){
+    @Override
+    public void initializeView(){
         listViewComic = (ListView) findViewById(R.id.listViewComics);
-        listComics = new Comics();
-        adapterComics = new ListAdapterComics(this, jsonManager.getAll().getResults());
+        adapterComics = mainPresenter.getListAdapterComics();
         listViewComic.setAdapter(adapterComics);
     }
 
+    //MainPresenter Injection
     private void initializeInjection(){
-        this.jsonManager = ComicsApplication.application().getJsonManager();
+        this.mainPresenter = new MainPresenter(this, this);
     }
 
     private void askForPermission(){
