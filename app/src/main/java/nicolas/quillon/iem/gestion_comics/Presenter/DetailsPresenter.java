@@ -28,6 +28,10 @@ public class DetailsPresenter{
         return comic.getTitle();
     }
 
+    public String getSharedText(){
+        return "The "+comic.getTitle()+" comic is at the price of "+comic.getPrice()+"\n\nDescription :\n"+comic.getDescription();
+    }
+
     public String getSynopsisComic(){
         return comic.getDescription();
     }
