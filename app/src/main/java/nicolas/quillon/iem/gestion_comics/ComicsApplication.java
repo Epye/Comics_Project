@@ -36,7 +36,7 @@ public class ComicsApplication extends Application {
         application = this;
     }
 
-    public void initJSONManager(){
-        this.jsonManager = new JSONManager("/data/sample-ok.json");
+    public void initJSONManager(String path){
+        this.jsonManager = new JSONManager(path);
     }
 }

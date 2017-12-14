@@ -19,7 +19,7 @@ public class MainPresenter {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public MainPresenter(Context context, MainView mainView) {
-        ComicsApplication.application().initJSONManager();
+        ComicsApplication.application().initJSONManager("/data/sample-ok.json");
         this.context = context;
         this.mainView = mainView;
         this.listComics = ComicsApplication.application().getJsonManager().getAll();
