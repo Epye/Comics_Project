@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
+import nicolas.quillon.iem.gestion_comics.Presenter.MainPresenter;
 
 /**
  * Created by Johan on 12/12/2017.
@@ -22,6 +23,7 @@ public class ComicsApplication extends Application {
 
     // Variable privée qui retiendra la seule instance du manager
     private JSONManager jsonManager;
+    private MainPresenter mainPresenter;
 
     // getter public pour récupérer l'instance unique de l'objet manager
     public JSONManager getJsonManager() {
