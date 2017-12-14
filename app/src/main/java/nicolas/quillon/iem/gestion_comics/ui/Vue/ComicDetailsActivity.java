@@ -1,6 +1,5 @@
 package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
-import android.app.ActionBar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +7,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import nicolas.quillon.iem.gestion_comics.ComicsApplication;
-import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
 import nicolas.quillon.iem.gestion_comics.Presenter.DetailsPresenter;
 import nicolas.quillon.iem.gestion_comics.Presenter.DetailsView;
 import nicolas.quillon.iem.gestion_comics.R;
