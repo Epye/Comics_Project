@@ -1,13 +1,13 @@
 package nicolas.quillon.iem.gestion_comics.Presenter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
-import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
+import nicolas.quillon.iem.gestion_comics.ui.Composition.ErrorModule;
+import nicolas.quillon.iem.gestion_comics.ui.Composition.ErrorModuleSnackbarImpl;
 import nicolas.quillon.iem.gestion_comics.ui.Vue.ListAdapterComics;
 
 /**
@@ -33,5 +33,9 @@ public class MainPresenter {
 
     public ListAdapterComics getListAdapterComics() {
         return new ListAdapterComics(this.context, this.listComics.getResults());
+    }
+
+    public boolean isEmpty(){
+        return this.listComics.getResults().isEmpty();
     }
 }
