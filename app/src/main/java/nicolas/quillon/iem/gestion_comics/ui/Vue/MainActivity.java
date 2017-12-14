@@ -15,12 +15,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import nicolas.quillon.iem.gestion_comics.ComicsApplication;
-import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
-import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 import nicolas.quillon.iem.gestion_comics.Presenter.MainPresenter;
 import nicolas.quillon.iem.gestion_comics.Presenter.MainView;
 import nicolas.quillon.iem.gestion_comics.R;
+import nicolas.quillon.iem.gestion_comics.ui.Composition.ErrorModule;
+import nicolas.quillon.iem.gestion_comics.ui.Composition.ErrorModuleSnackbarImpl;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -29,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private ListView listViewComic;
     private ListAdapterComics adapterComics;
     private MainPresenter mainPresenter;
+    private ErrorModule errorModule;
 
     //endregion
 
@@ -56,17 +56,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
     public void initializeView(){
         mainPresenter = new MainPresenter(this, this);
         listViewComic = (ListView) findViewById(R.id.listViewComics);
-        adapterComics = mainPresenter.getListAdapterComics();
-        listViewComic.setAdapter(adapterComics);
 
-        listViewComic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent().setClass(MainActivity.this, ComicDetailsActivity.class);
-                intent.putExtra("index", i);
-                startActivity(intent);
-            }
-        });
+        if(mainPresenter.isEmpty()){
+            errorModule =new ErrorModuleSnackbarImpl();
+            errorModule.displayError(this, "Impossible de lire les données (fichier JSON corrompu)");
+        }else {
+            adapterComics = mainPresenter.getListAdapterComics();
+            listViewComic.setAdapter(adapterComics);
+
+            listViewComic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent().setClass(MainActivity.this, ComicDetailsActivity.class);
+                    intent.putExtra("index", i);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void askForPermission(){
