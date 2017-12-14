@@ -2,7 +2,6 @@ package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
 import android.content.Context;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
-import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 import nicolas.quillon.iem.gestion_comics.R;
 
 public class ListAdapterComics extends ArrayAdapter<Comic> {

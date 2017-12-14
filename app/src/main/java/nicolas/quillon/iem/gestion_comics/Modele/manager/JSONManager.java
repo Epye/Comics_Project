@@ -51,7 +51,6 @@ public class JSONManager {
 
     public Comics getAll() {
         if(comics == null){
-            //afficheErreur
             return new Comics("200", new ArrayList<Comic>());
         }
         return comics;
