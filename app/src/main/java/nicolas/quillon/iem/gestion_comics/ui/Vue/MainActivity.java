@@ -18,16 +18,17 @@ import android.widget.ListView;
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
+import nicolas.quillon.iem.gestion_comics.Presenter.MainPresenter;
+import nicolas.quillon.iem.gestion_comics.Presenter.MainView;
 import nicolas.quillon.iem.gestion_comics.R;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     //region Variables
     private ListView listViewComic;
-    private JSONManager jsonManager;
-
     private ListAdapterComics adapterComics;
+    private MainPresenter mainPresenter;
 
     //endregion
 
@@ -45,34 +46,27 @@ public class MainActivity extends AppCompatActivity {
     }
     //endregion
 
-
     public void init(){
-        //Initialisation du fichier JSON
-        //jsonManager=new JSONManager("/data/sample-ok.json"); //dossier data à la racine du tel (pas sur SD)
-
-        //ad - appel de la fonction d'initialisation
-        initializeInjection();
         initializeView();
     }
 
 
     //region Methods
-    private void initializeView(){
+    @Override
+    public void initializeView(){
+        mainPresenter = new MainPresenter(this, this);
         listViewComic = (ListView) findViewById(R.id.listViewComics);
-        adapterComics = new ListAdapterComics(this, jsonManager.getAll().getResults());
+        adapterComics = mainPresenter.getListAdapterComics();
         listViewComic.setAdapter(adapterComics);
 
         listViewComic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent().setClass(MainActivity.this, ComicDetailsActivity.class);
+                intent.putExtra("index", i);
                 startActivity(intent);
             }
         });
-    }
-
-    private void initializeInjection(){
-        this.jsonManager = ComicsApplication.application().getJsonManager();
     }
 
     private void askForPermission(){
@@ -88,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    ComicsApplication.application().resetJSONManager(); //car l'injection de dépendance a été créée avant le runtime permission, donc le JSONManager est égal à NULL
                     init();
                 } else {
                     new AlertDialog.Builder(this)
