@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.004906">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.001549">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: gradle" time="1.245461">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: gradle" time="2.647233">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: gradle" time="2.711579">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: mkdir -p ../output/apk/" time="0.022169">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: mv /Users/iem/Documents/Coder_proprement/Gestion_Comics/output/apk/comics-project-201712081158.apk ../output/apk/comics-project-201712081204.apk" time="0.005269">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

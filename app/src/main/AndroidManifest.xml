@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Vue.ComicDetailsActivity" />
+        <activity android:name=".ui.Vue.ComicDetailsActivity"
+            android:parentActivityName=".ui.Vue.MainActivity"/>
         <activity android:name=".ui.Vue.ListAdapterComics" />
     </application>
 

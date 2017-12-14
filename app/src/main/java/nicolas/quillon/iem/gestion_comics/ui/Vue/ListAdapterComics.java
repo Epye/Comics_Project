@@ -47,8 +47,6 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
 
             viewHolder.imageViewComic = (ImageView) pConvertView.findViewById(R.id.imageViewComic);
             viewHolder.textViewTitle = (TextView) pConvertView.findViewById(R.id.textViewTitre);
-            viewHolder.textViewName = (TextView) pConvertView.findViewById(R.id.textViewNom);
-            viewHolder.textViewNumber = (TextView) pConvertView.findViewById(R.id.textViewNumero);
             viewHolder.textViewDate = (TextView) pConvertView.findViewById(R.id.textViewDate);
             viewHolder.textViewNumbersPages = (TextView) pConvertView.findViewById(R.id.textViewNbPage);
 
@@ -58,13 +56,10 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
 
         Comic comic = getItem(pPosition);
         viewHolder.textViewTitle.setText(comic.getTitle());
-        //viewHolder.textViewName.setText(comic.get);
-        //viewHolder.textViewDay.setText(comic.getDate());
-        viewHolder.textViewNumber.setText(""+comic.getIssueNumber());
         viewHolder.textViewDate.setText(comic.getDate());
         viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
 
-        Picasso.with(context).load(comic.getImage()).resize(200, 200).into(viewHolder.imageViewComic);
+        Picasso.with(context).load(comic.getImage()).resize(100, 150).into(viewHolder.imageViewComic);
 
         return pConvertView;
 
@@ -77,8 +72,6 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
     private static class ViewHolder{
         ImageView imageViewComic;
         TextView textViewTitle;
-        TextView textViewName;
-        TextView textViewNumber;
         TextView textViewDate;
         TextView textViewNumbersPages;
     }
