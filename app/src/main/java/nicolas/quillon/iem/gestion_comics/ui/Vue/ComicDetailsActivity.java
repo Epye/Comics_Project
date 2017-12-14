@@ -12,10 +12,13 @@ import org.w3c.dom.Text;
 
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.manager.JSONManager;
+import nicolas.quillon.iem.gestion_comics.Presenter.DetailsPresenter;
+import nicolas.quillon.iem.gestion_comics.Presenter.DetailsView;
 import nicolas.quillon.iem.gestion_comics.R;
+import com.squareup.picasso.Picasso;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-public class ComicDetailsActivity extends AppCompatActivity {
+public class ComicDetailsActivity extends AppCompatActivity implements DetailsView{
 
     private TextView textViewTitre ;
     private TextView textViewSynopsis;
@@ -27,7 +30,7 @@ public class ComicDetailsActivity extends AppCompatActivity {
     private TextView textViewCredit;
     private ImageView imageViewComic;
 
-    private JSONManager jsonManager;
+    private DetailsPresenter detailsPresenter;
 
 
     @Override
@@ -35,28 +38,41 @@ public class ComicDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comic_details);
 
-        setTitle("Détail du comic");
-
-        initializeInjection();
-        InitializeView();
-
+        initializeView();
     }
 
-    private void InitializeView(){
+    @Override
+    public void initializeView(){
+        setTitle(R.string.title_details);
+
+        detailsPresenter = new DetailsPresenter(this, this, (int) getIntent().getExtras().get("index"));
+
         textViewTitre = (TextView) findViewById(R.id.textViewTitre);
+        textViewTitre.setText(detailsPresenter.getTitleComic());
+
         textViewSynopsis = (TextView) findViewById(R.id.Synopsis);
+        textViewSynopsis.setText(detailsPresenter.getSynopsisComic());
+
         textViewInfo = (TextView) findViewById(R.id.textViewInfo);
+
         textViewDate = (TextView) findViewById(R.id.textViewDate);
+        textViewDate.setText(detailsPresenter.getDateComic());
+
         textViewPrice = (TextView) findViewById(R.id.textViewPrice);
+        textViewPrice.setText(detailsPresenter.getPriceComic());
+
         textViewNbPages = (TextView) findViewById(R.id.textViewNbPage);
+        textViewNbPages.setText(detailsPresenter.getnbPageComic());
+
         textViewDiamondCode = (TextView) findViewById(R.id.textViewDiamondCode);
+        textViewDiamondCode.setText(detailsPresenter.getDiamondComic());
+
         textViewCredit = (TextView) findViewById(R.id.textViewCredit);
+        textViewCredit.setText(detailsPresenter.getCreditComic());
 
         imageViewComic = (ImageView) findViewById(R.id.imageViewComic);
-    }
+        Picasso.with(this).load(detailsPresenter.getImageComic()).into(imageViewComic);
 
 
-    private void initializeInjection(){
-        this.jsonManager = ComicsApplication.application().getJsonManager();
     }
 }

@@ -34,15 +34,9 @@ public class ComicsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
-
-        try{
-            this.jsonManager = new JSONManager("/data/sample-ok.json");
-        }catch (Exception exception){
-            exception.printStackTrace();
-        }
     }
 
-    public void resetJSONManager(){
+    public void initJSONManager(){
         this.jsonManager = new JSONManager("/data/sample-ok.json");
     }
 }

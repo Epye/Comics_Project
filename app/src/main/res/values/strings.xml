@@ -11,4 +11,5 @@
     <string name="price">Price</string>
     <string name="diamondcode">DiamondCode</string>
     <string name="credits">Credits</string>
+    <string name="title_details">Détail du comic</string>
 </resources>

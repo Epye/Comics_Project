@@ -15,17 +15,16 @@ import nicolas.quillon.iem.gestion_comics.ui.Vue.ListAdapterComics;
  */
 
 public class MainPresenter {
-    private JSONManager jsonManager;
     private final Context context;
     private final MainView mainView;
     private Comics listComics;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public MainPresenter(Context context, MainView mainView) {
+        ComicsApplication.application().initJSONManager();
         this.context = context;
         this.mainView = mainView;
-        initializeInjection();
-        this.listComics = jsonManager.getAll();
+        this.listComics = ComicsApplication.application().getJsonManager().getAll();
     }
 
     public Comics getComics() {
@@ -33,11 +32,6 @@ public class MainPresenter {
     }
 
     public ListAdapterComics getListAdapterComics() {
-        return new ListAdapterComics(this.context, jsonManager.getAll().getResults());
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private void initializeInjection() {
-        this.jsonManager = ComicsApplication.application().getJsonManager();
+        return new ListAdapterComics(this.context, this.listComics.getResults());
     }
 }
