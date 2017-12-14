@@ -19,6 +19,8 @@ android {
 }
 
 dependencies {
+    final MOCKITO_VERSION = "1.10.19"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     compile "com.squareup.picasso:picasso:2.4.0"
@@ -29,5 +31,6 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.7.3' //JSON Library
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3' //JSON Library
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3' //JSON Library
+    testImplementation "org.mockito:mockito-core:${MOCKITO_VERSION}"
     compile 'com.android.support:design:26.1.0' //Snackbar
 }
