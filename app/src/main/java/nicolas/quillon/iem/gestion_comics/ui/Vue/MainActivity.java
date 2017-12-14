@@ -46,13 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
     //endregion
 
-
     public void init(){
-        //Initialisation du fichier JSON
-        //jsonManager=new JSONManager("/data/sample-ok.json"); //dossier data à la racine du tel (pas sur SD)
-
-        //ad - appel de la fonction d'initialisation
-        initializeInjection();
         initializeView();
     }
 
@@ -60,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     //region Methods
     @Override
     public void initializeView(){
+        mainPresenter = new MainPresenter(this, this);
         listViewComic = (ListView) findViewById(R.id.listViewComics);
         adapterComics = mainPresenter.getListAdapterComics();
         listViewComic.setAdapter(adapterComics);
@@ -68,14 +63,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent().setClass(MainActivity.this, ComicDetailsActivity.class);
+                intent.putExtra("index", i);
                 startActivity(intent);
             }
         });
-    }
-
-    //MainPresenter Injection
-    private void initializeInjection(){
-        this.mainPresenter = new MainPresenter(this, this);
     }
 
     private void askForPermission(){
@@ -91,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    ComicsApplication.application().resetJSONManager(); //car l'injection de dépendance a été créée avant le runtime permission, donc le JSONManager est égal à NULL
                     init();
                 } else {
                     new AlertDialog.Builder(this)
