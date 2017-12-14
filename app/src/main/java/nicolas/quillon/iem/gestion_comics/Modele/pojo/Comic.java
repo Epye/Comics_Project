@@ -1,6 +1,8 @@
 package nicolas.quillon.iem.gestion_comics.Modele.pojo;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by iem on 05/12/2017.
@@ -108,7 +110,15 @@ public class Comic implements Serializable {
     }
 
     public String getDate() {
-        return date;
+        Date d = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        try{
+            d = formatter.parse(date.substring(0, date.length()-4));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        SimpleDateFormat outFormat = new SimpleDateFormat("EEEE dd/MM/yyyy");
+        return outFormat.format(d);
     }
 
     public void setDate(String date) {

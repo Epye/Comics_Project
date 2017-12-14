@@ -57,13 +57,10 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
         Comic comic = getItem(pPosition);
         viewHolder.textViewTitle.setText(comic.getTitle());
 
-        String date = comic.getDate().split("T")[0];
-        String dateresult = date.split("-")[2] + "-" + date.split("-")[1] + "-" + date.split("-")[0];
-
-        viewHolder.textViewDate.setText(dateresult);
+        viewHolder.textViewDate.setText(comic.getDate());
         viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
 
-        Picasso.with(context).load(comic.getImage()).resize(100, 150).into(viewHolder.imageViewComic);
+        Picasso.with(context).load(comic.getImage()).into(viewHolder.imageViewComic);
 
         return pConvertView;
 

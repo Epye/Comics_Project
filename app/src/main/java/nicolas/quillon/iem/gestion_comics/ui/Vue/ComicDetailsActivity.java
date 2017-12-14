@@ -51,9 +51,7 @@ public class ComicDetailsActivity extends AppCompatActivity implements DetailsVi
         textViewInfo = (TextView) findViewById(R.id.textViewInfo);
 
         textViewDate = (TextView) findViewById(R.id.textViewDate);
-        String date = detailsPresenter.getDateComic().split("T")[0];
-        String dateresult = date.split("-")[2] + "-" + date.split("-")[1] + "-" + date.split("-")[0];
-        textViewDate.setText(dateresult);
+        textViewDate.setText(detailsPresenter.getDateComic());
 
         textViewPrice = (TextView) findViewById(R.id.textViewPrice);
         textViewPrice.setText(detailsPresenter.getPriceComic());
@@ -68,7 +66,7 @@ public class ComicDetailsActivity extends AppCompatActivity implements DetailsVi
         textViewCredit.setText(detailsPresenter.getCreditComic());
 
         imageViewComic = (ImageView) findViewById(R.id.imageViewComic);
-        Picasso.with(this).load(detailsPresenter.getImageComic()).resize(100, 150).into(imageViewComic);
+        Picasso.with(this).load(detailsPresenter.getImageComic()).into(imageViewComic);
 
 
     }

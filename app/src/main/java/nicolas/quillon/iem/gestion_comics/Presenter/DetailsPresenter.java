@@ -4,6 +4,10 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import nicolas.quillon.iem.gestion_comics.ComicsApplication;
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
 
@@ -33,23 +37,27 @@ public class DetailsPresenter{
     }
 
     public String getDateComic(){
-        return comic.getDate();
+        return "Date de parution : " + comic.getDate();
     }
 
     public String getPriceComic(){
-        return Float.toString(comic.getPrice());
+        return Float.toString(comic.getPrice()) + "€";
     }
 
     public String getnbPageComic(){
-        return Integer.toString(comic.getPageCount());
+        return "Nb pages : " + Integer.toString(comic.getPageCount());
     }
 
     public String getDiamondComic(){
-        return comic.getDiamondCode();
+        return "Diamond : " + comic.getDiamondCode();
     }
 
     public String getCreditComic(){
-        return comic.getCreators().toString();
+        String tmp = "Crédits : \n";
+        for(int i=0; i<comic.getCreators().length; i++){
+            tmp += comic.getCreators()[i].getRole() + " : "+ comic.getCreators()[i].getName() + " ";
+        }
+        return tmp;
     }
 
     public String getImageComic(){
