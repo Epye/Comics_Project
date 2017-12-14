@@ -2,7 +2,6 @@ package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
 import android.content.Context;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comic;
-import nicolas.quillon.iem.gestion_comics.Modele.pojo.Comics;
 import nicolas.quillon.iem.gestion_comics.R;
 
 public class ListAdapterComics extends ArrayAdapter<Comic> {
 
-    Context context;
+    private Context context;
+
     //region Constructeur
 
     public ListAdapterComics(Context pContext, List objects){
@@ -56,7 +56,11 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
 
         Comic comic = getItem(pPosition);
         viewHolder.textViewTitle.setText(comic.getTitle());
-        viewHolder.textViewDate.setText(comic.getDate());
+
+        String date = comic.getDate().split("T")[0];
+        String dateresult = date.split("-")[2] + "-" + date.split("-")[1] + "-" + date.split("-")[0];
+
+        viewHolder.textViewDate.setText(dateresult);
         viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
 
         Picasso.with(context).load(comic.getImage()).resize(100, 150).into(viewHolder.imageViewComic);
