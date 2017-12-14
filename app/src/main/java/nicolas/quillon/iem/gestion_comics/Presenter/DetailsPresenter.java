@@ -37,11 +37,11 @@ public class DetailsPresenter{
     }
 
     public String getDateComic(){
-        return "Date de parution : " + comic.getDate();
+        return "Date de publication : " + comic.getDate();
     }
 
     public String getPriceComic(){
-        return Float.toString(comic.getPrice()) + "€";
+        return "Prix : "+Float.toString(comic.getPrice()) + "€";
     }
 
     public String getnbPageComic(){
@@ -55,7 +55,7 @@ public class DetailsPresenter{
     public String getCreditComic(){
         String tmp = "Crédits : \n";
         for(int i=0; i<comic.getCreators().length; i++){
-            tmp += comic.getCreators()[i].getRole() + " : "+ comic.getCreators()[i].getName() + " ";
+            tmp += comic.getCreators()[i].getRole() + " : "+ comic.getCreators()[i].getName() + "\n";
         }
         return tmp;
     }

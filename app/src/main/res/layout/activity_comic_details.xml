@@ -64,7 +64,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold|italic"
                 app:layout_constraintLeft_toLeftOf="@+id/textViewTitre"
-                app:layout_constraintTop_toBottomOf="@id/imageViewComic" />
+                app:layout_constraintTop_toBottomOf="@id/Synopsis" />
 
         <TextView
             android:id="@+id/textViewDate"
@@ -78,7 +78,7 @@
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/price"
             app:layout_constraintTop_toBottomOf="@id/textViewDate"/>
 
@@ -87,24 +87,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/nbPages"
-            app:layout_constraintLeft_toRightOf="@id/textViewPrice"
-            app:layout_constraintTop_toTopOf="@id/textViewPrice"/>
+            app:layout_constraintTop_toBottomOf="@id/textViewPrice"/>
 
         <TextView
             android:id="@+id/textViewDiamondCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:text="@string/diamondcode"
-            app:layout_constraintLeft_toRightOf="@id/textViewNbPage"
-            app:layout_constraintTop_toTopOf="@id/textViewPrice"/>
+            app:layout_constraintTop_toBottomOf="@id/textViewNbPage"/>
 
             <TextView
                 android:id="@+id/textViewCredit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/credits"
                 app:layout_constraintLeft_toLeftOf="@id/textViewTitre"
                 app:layout_constraintTop_toBottomOf="@id/textViewDiamondCode" />
