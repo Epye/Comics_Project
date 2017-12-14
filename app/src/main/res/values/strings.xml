@@ -5,11 +5,12 @@
     <string name="jour">Jour</string>
     <string name="numero">N°</string>
     <string name="date">Date</string>
-    <string name="nbPages">Nb pages</string>
+    <string name="nbPages">Nombres de pages : </string>
     <string name="synopsis">Synopsis</string>
-    <string name="info">Info</string>
+    <string name="info">Information</string>
     <string name="price">Price</string>
     <string name="diamondcode">DiamondCode</string>
     <string name="credits">Credits</string>
     <string name="title_details">Détail du comic</string>
+    <string name="share">Partager</string>
 </resources>

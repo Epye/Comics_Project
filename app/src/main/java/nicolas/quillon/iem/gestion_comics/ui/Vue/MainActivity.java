@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         initializeView();
     }
 
-
     //region Methods
     @Override
     public void initializeView(){

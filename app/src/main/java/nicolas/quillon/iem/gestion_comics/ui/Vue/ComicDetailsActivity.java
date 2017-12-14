@@ -1,16 +1,20 @@
 package nicolas.quillon.iem.gestion_comics.ui.Vue;
 
+import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import nicolas.quillon.iem.gestion_comics.Presenter.DetailsPresenter;
 import nicolas.quillon.iem.gestion_comics.Presenter.DetailsView;
 import nicolas.quillon.iem.gestion_comics.R;
-import com.squareup.picasso.Picasso;
 
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public class ComicDetailsActivity extends AppCompatActivity implements DetailsView{
@@ -34,6 +38,30 @@ public class ComicDetailsActivity extends AppCompatActivity implements DetailsVi
         setContentView(R.layout.activity_comic_details);
 
         initializeView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.details_menu, menu);
+        return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.shareButton:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,detailsPresenter.getTitleComic());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, detailsPresenter.getSharedText());
+                startActivity(Intent.createChooser(sharingIntent, "Share"));
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -66,7 +94,7 @@ public class ComicDetailsActivity extends AppCompatActivity implements DetailsVi
         textViewCredit.setText(detailsPresenter.getCreditComic());
 
         imageViewComic = (ImageView) findViewById(R.id.imageViewComic);
-        Picasso.with(this).load(detailsPresenter.getImageComic()).into(imageViewComic);
+        Picasso.with(this).load(detailsPresenter.getImageComic()).resize(240, 350).into(imageViewComic);
 
 
     }
