@@ -17,7 +17,8 @@ import nicolas.quillon.iem.gestion_comics.R;
 
 public class ListAdapterComics extends ArrayAdapter<Comic> {
 
-    Context context;
+    private Context context;
+
     //region Constructeur
 
     public ListAdapterComics(Context pContext, List objects){
@@ -53,10 +54,11 @@ public class ListAdapterComics extends ArrayAdapter<Comic> {
 
         Comic comic = getItem(pPosition);
         viewHolder.textViewTitle.setText(comic.getTitle());
-        viewHolder.textViewDate.setText(comic.getDate());
-        viewHolder.textViewNumbersPages.setText(""+comic.getPageCount());
 
-        Picasso.with(context).load(comic.getImage()).resize(100, 150).into(viewHolder.imageViewComic);
+        viewHolder.textViewDate.setText(comic.getDate());
+        viewHolder.textViewNumbersPages.setText(""+comic.getPageCount() + " pages" );
+
+        Picasso.with(context).load(comic.getImage()).resize(250, 350).into(viewHolder.imageViewComic);
 
         return pConvertView;
 
